@@ -17,16 +17,22 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'formly'
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/', {
+      .when('/outputs', {
         templateUrl: 'views/outputs.html',
         controller: 'outputsCtrl',
         controllerAs:'outputs'
       })
+      .when('/metrics', {
+        templateUrl: 'views/metrics.html',
+        controller: 'metricCtrl',
+        controllerAs:'metric'
+      })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/outputs'
       });
   });

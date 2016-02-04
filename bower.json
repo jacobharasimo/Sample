@@ -2,10 +2,10 @@
   "name": "sample",
   "version": "0.0.0",
   "dependencies": {
-  	"foundation":"^5.5.0",
+    "foundation": "^5.5.0",
     "angular": "^1.4.0",
     "json3": "^3.3.0",
-    "es5-shim": "^4.0.0",    
+    "es5-shim": "^4.0.0",
     "angular-animate": "^1.4.0",
     "angular-aria": "^1.4.0",
     "angular-cookies": "^1.4.0",
@@ -13,11 +13,16 @@
     "angular-resource": "^1.4.0",
     "angular-route": "^1.4.0",
     "angular-sanitize": "^1.4.0",
-    "angular-touch": "^1.4.0"
+    "angular-touch": "^1.4.0",
+    "angular-formly": "^7.3.9",
+    "api-check": "^7.5.5"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.0",
     "angular-scenario": "~1.4.0"
   },
-  "appPath": "app"
+  "appPath": "app",
+  "resolutions": {
+    "angular": "^1.4.0"
+  }
 }

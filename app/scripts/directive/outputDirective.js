@@ -8,24 +8,32 @@ angular.module('sampleApp')
       restrict: 'E',
       replace: false,
       scope: true,
-      controller: function ($scope) {
-        this.$scope = $scope;
-        this.oldName = '';
+      controller: function () {
         this.isEditMode = false;
+
+        this.model={
+          name:this.name
+        };
+        this.fields=[
+          {
+            key:'name',
+            type:'input',
+            templateOptions:{
+              type:'text',
+              label:'output name',
+              placeholder:'Enter your Output',
+              required: true,
+              requiredValidationMessage: 'FIRSTNAME_IS_REQUIRED'
+            }
+          }
+        ];
+
 
         this.save = function saveOutput(form) {
           form.$setSubmitted();
           if (form.$valid) {
             this.update();
             this.isEditMode = false;
-          }
-        };
-
-        this.clearValidation = function clearValidation(form, output) {
-          if (form.$invalid) {
-            angular.forEach(output.$error, function (value, key) {
-              output.$setValidity(key, value);
-            });
           }
         };
 
