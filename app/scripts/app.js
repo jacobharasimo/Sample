@@ -29,8 +29,8 @@ angular
       })
       .when('/metrics', {
         templateUrl: 'views/metrics.html',
-        controller: 'metricCtrl',
-        controllerAs:'metric'
+        controller: 'metricsCtrl',
+        controllerAs:'metrics'
       })
       .otherwise({
         redirectTo: '/outputs'

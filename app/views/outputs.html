@@ -2,19 +2,22 @@
 
 <ul class="small-block-grid-1">
   <li ng-repeat="output in outputs.list track by $index">
-    <output class="row collapse"
-            name="output.name"
-            delete="outputs.removeOutput(output)"
-            update="outputs.updateOutput(output)"></output>
+    <edit-panel class="row collapse"
+                fields="outputs.outputFields"
+                model="output"
+                name="output.name"
+                delete="outputs.removeOutput(output)"
+                save="outputs.updateOutput(output)"></edit-panel>
   </li>
 </ul>
-<form ng-submit="main.save()">
-  <div class="row collapse">
-    <div class="small-9 columns">
-      <input type="text" placeholder="small-9.columns" ng-model="main.newOutput.name"/>
+
+
+<form ng-submit="outputs.addOutput">
+  <formly-form model="outputs.model" fields="outputs.outputFields" form="output.form" options="output.options">
+    <div class="row collapse">
+      <div class="small-3 columns">
+        <button type="submit" class="button postfix">add</button>
+      </div>
     </div>
-    <div class="small-3 columns">
-      <button type="button" class="button postfix" ng-click="outputs.addOutput(main.newOutput)">add</button>
-    </div>
-  </div>
+  </formly-form>
 </form>

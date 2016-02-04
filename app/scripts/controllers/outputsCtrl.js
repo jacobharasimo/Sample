@@ -10,6 +10,22 @@
 
 function outputsCtrl($log){
   var vm={};
+
+  vm.outputFields=[
+    {
+      key:'name',
+      type:'input',
+      templateOptions:{
+        type:'text',
+        label:'output name',
+        placeholder:'Enter your Output',
+        required: true
+      },
+      modelOptions: {
+        debounce: 0
+      }
+    }
+  ];
   vm.list = [{name:'test1'}];
   vm.addOutput = function addOutput(output){
     vm.list.push(output);

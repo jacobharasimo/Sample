@@ -4,16 +4,16 @@
 </div>
 <!--edit mode-->
 <div class="panel" ng-if="output.isEditMode">
-  <form name="outputForm" ng-submit="output.save(outputForm)" novalidate>
+  <form name="outputForm" ng-submit="output.onSubmit(output.form)" novalidate>
     <formly-form model="output.model" fields="output.fields" form="output.form" options="output.options">
       <div class="row">
         <div class="columns small-12">
           <ul class="button-group">
             <li>
-              <button type="button" ng-click="output.delete(output)">Delete</button>
+              <button type="button" ng-click="output.onDelete(output)">Delete</button>
             </li>
             <li>
-              <button type="button" ng-click="output.cancel()">Cancel</button>
+              <button type="button" ng-click="output.onCancel()">Cancel</button>
             </li>
             <li>
               <button type="submit" ng-disabled="outputForm.$invalid">Save</button>
