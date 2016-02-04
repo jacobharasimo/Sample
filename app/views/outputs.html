@@ -1,0 +1,18 @@
+<form ng-submit="main.save()">
+  <ul class="small-block-grid-1">
+    <li ng-repeat="output in outputs.list track by $index">
+      <output class="row collapse"
+              name="output.name"
+              delete="main.removeOutput(output)"
+              update="main.updateOutput(output)"></output>
+    </li>
+  </ul>
+  <div class="row collapse">
+    <div class="small-9 columns">
+      <input type="text" placeholder="small-9.columns" ng-model="main.newOutput.name"/>
+    </div>
+    <div class="small-3 columns">
+      <button type="button" class="button postfix" ng-click="main.addOutput(main.newOutput)">add</button>
+    </div>
+  </div>
+</form>
