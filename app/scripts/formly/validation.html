@@ -1,0 +1,10 @@
+<formly-transclude></formly-transclude>
+<div class="help-block"
+     ng-if="showError"
+     ng-messages="fc.$error"
+     aria-live="assertive">
+  <div ng-message="{{::name}}" ng-repeat="(name, message) in ::options.validation.messages" role="alert"
+       id="{{options.key + '_error'}}">
+    {{message(fc.$viewValue, fc.$modelValue, this)}}
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="radio-inline" ng-repeat="(key, option) in to.options track by $index">
+  <input type="radio"
+         name="{{id + '_'+ $index}}"
+         id="{{id + '_'+ $index}}"
+         ng-value="::option[to.valueProp || 'value']"
+         ng-model="model[options.key]"> <label for="{{id + '_'+ $index}}" ng-bind="::option[to.labelProp || 'name']"> </label>
+</div>
