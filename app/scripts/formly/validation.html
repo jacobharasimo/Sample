@@ -3,8 +3,8 @@
      ng-if="showError"
      ng-messages="fc.$error"
      aria-live="assertive">
-  <div ng-message="{{::name}}" ng-repeat="(name, message) in ::options.validation.messages" role="alert"
+  <small ng-message="{{::name}}" class="error" ng-repeat="(name, message) in ::options.validation.messages" role="alert"
        id="{{options.key + '_error'}}">
     {{message(fc.$viewValue, fc.$modelValue, this)}}
-  </div>
+  </small>
 </div>

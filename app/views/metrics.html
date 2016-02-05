@@ -1,16 +1,25 @@
 <h1>Metrics</h1>
 <div class="panel">
-  <div class="panel-title">
-    Test Form
-  </div>
-  <div class="panel-body">
-    <form name="metricForm" ng-submit="metrics.onSubmit(metrics.form)" novalidate>
-      <formly-form model="metrics.metricModel" fields="metrics.metricFields" form="metrics.form"
-                   options="metrics.options">
-
-      </formly-form>
-    </form>
-  </div>
+  <form name="metricForm" ng-submit="metrics.onSubmit(metrics.form)" novalidate>
+    <formly-form model="metrics.metricModel" fields="metrics.metricFields" form="metrics.form"
+                 options="metrics.options">
+      <div class="row">
+        <div class="columns small-12">
+          <ul class="button-group">
+            <li>
+              <button type="button" ng-click="output.onDelete(output)">Delete</button>
+            </li>
+            <li>
+              <button type="button" ng-click="output.onCancel()">Cancel</button>
+            </li>
+            <li>
+              <button type="submit">Save</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </formly-form>
+  </form>
 </div>
 
 <ul class="small-block-grid-1">

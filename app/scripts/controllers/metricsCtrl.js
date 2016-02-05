@@ -12,8 +12,12 @@ function metricsCtrl($log) {
   var vm = {};
 
   var options = [
-    {name: 'Time', value: 'Time'},
-    {name: 'Cost', value: 'Cost'}
+    {name: 'Time', value: 'time'},
+    {name: 'Cost', value: 'cost'},
+    {name: 'Quality', value: 'quality'},
+    {name: 'Feedback', value: 'feedback'},
+    {name: 'Quantity', value: 'quantity'},
+    {name: 'Variance', value: 'variance'}
   ];
 
   vm.metricModel = {
@@ -26,13 +30,12 @@ function metricsCtrl($log) {
       key: 'type',
       type: 'radio',
       templateOptions: {
-        label: 'Educator\'s New School',
-        placeholder: 'Choose a Institution',
+        label: 'Select how your output will be measured',
         options: options,
         required: true,
         valueProp: 'name',
         labelProp: 'value',
-        requiredValidationMessage: 'Institution Name Required'
+        requiredValidationMessage: 'Metric type Required'
       }
     },
     {
@@ -53,6 +56,7 @@ function metricsCtrl($log) {
   vm.outputs = angular.copy(vm.metricFields);
 
   vm.onSubmit = function (form) {
+    form.$setSubmitted();
     $log.debug(form);
   };
 
