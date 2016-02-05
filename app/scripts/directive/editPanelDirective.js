@@ -34,7 +34,7 @@ angular.module('sampleApp')
 
         this.onDelete = function onDelete(){
           $log.debug('call delete function');
-          this.delete();
+          this.remove();
         }
 
       },
@@ -44,7 +44,7 @@ angular.module('sampleApp')
         model:'=',
         name: '=',
         edit: '&',
-        delete: '&',
+        remove: '&',
         cancel: '&',
         save:'&'
       }
