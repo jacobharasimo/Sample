@@ -11,10 +11,11 @@
 function outputsCtrl($log){
   var vm={};
 
-  vm.editFields=[
+  vm.newOutputFields=[
     {
       key:'name',
       type:'input',
+      className:'columns small-9',
       templateOptions:{
         type:'text',
         label:'output name',
@@ -43,7 +44,7 @@ function outputsCtrl($log){
     }
   ];
 
-  vm.list = [{model:{name:'test'},fields:angular.copy(vm.outputFields)}];
+  vm.list = [];
 
   vm.addOutput = function addOutput(output){
     var newOutput={model:angular.copy(output),fields:angular.copy(vm.outputFields)};

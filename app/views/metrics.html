@@ -5,7 +5,8 @@
   </div>
   <div class="panel-body">
     <form name="metricForm" ng-submit="metrics.onSubmit(metrics.form)" novalidate>
-      <formly-form model="metrics.metricModel" fields="metrics.metricFields" form="metrics.form" options="metrics.options">
+      <formly-form model="metrics.metricModel" fields="metrics.metricFields" form="metrics.form"
+                   options="metrics.options">
 
       </formly-form>
     </form>
@@ -14,7 +15,7 @@
 
 <ul class="small-block-grid-1">
   <li ng-repeat="output in metrics.outputs track by $index">
-    <output style="display: block;">
+    <div style="display: block;">
       <div class="panel" style="margin-bottom:0;">
         OUTPUT NAME
       </div>
@@ -56,6 +57,6 @@
           </div>
         </div>
       </form>
-    </output>
+    </div>
   </li>
 </ul>
