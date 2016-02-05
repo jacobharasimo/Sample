@@ -8,18 +8,20 @@
  * Controller of the sampleApp
  */
 
-function metricsCtrl($log){
-  var vm={};
+function metricsCtrl($log) {
+  var vm = {};
 
-  var options =[{name:'Time',value:'Time'},
-    {name:'Cost',value:'Cost'}];
+  var options = [
+    {name: 'Time', value: 'Time'},
+    {name: 'Cost', value: 'Cost'}
+  ];
 
-  vm.metricModel={
-    name:null,
-    type:null
+  vm.metricModel = {
+    name: null,
+    type: null
   };
 
-  vm.metricFields=[
+  vm.metricFields = [
     {
       key: 'type',
       type: 'radio',
@@ -34,12 +36,12 @@ function metricsCtrl($log){
       }
     },
     {
-      key:'name',
-      type:'input',
-      templateOptions:{
-        type:'text',
-        label:'describe your metric',
-        placeholder:'Enter the metric...',
+      key: 'name',
+      type: 'input',
+      templateOptions: {
+        type: 'text',
+        label: 'describe your metric',
+        placeholder: 'Enter the metric...',
         required: true
       },
       modelOptions: {
@@ -48,34 +50,17 @@ function metricsCtrl($log){
     }
   ];
 
-  vm.outputs=[
-    {
-      name:'SampleOutput1',
-      isInsertMode:false,
-      toggleInsertMode:function toggleInsertMode(){
-        vm.newMetric={};
-        this.isInsertMode = !this.isInsertMode;
-      },
-      addMetric:function addMetric(metric){
-        this.metrics.push(metric);
-        this.toggleInsertMode();
-      },
-      metrics:[{name:'test1',type:'time'}],
-      removeMetric:function removeMetric(metric){
+  vm.outputs = angular.copy(vm.metricFields);
 
-      }
-    }
-  ];
-
-  vm.onSubmit = function(form){
+  vm.onSubmit = function (form) {
     $log.debug(form);
   };
 
-  vm.updateMetric = function updateOutput(output){
-    $log.debug('update ',output);
+  vm.updateMetric = function updateOutput(output) {
+    $log.debug('update ', output);
   };
 
-  vm.removeMetric = function removeOutput(output){
+  vm.removeMetric = function removeOutput(output) {
     $log.debug('remove output ', output);
   };
 

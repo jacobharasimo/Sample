@@ -10,7 +10,6 @@ angular.module('sampleApp')
       scope: true,
       controller: function () {
         this.isEditMode = false;
-        $log.debug(this.fields);
 
         this.onSubmit = function onSubmit(postForm) {
           $log.debug('submit form');
@@ -35,14 +34,13 @@ angular.module('sampleApp')
         this.onDelete = function onDelete(){
           $log.debug('call delete function');
           this.remove();
-        }
+        };
 
       },
       controllerAs: 'output',
       bindToController: {
         fields:'=',
         model:'=',
-        name: '=',
         edit: '&',
         remove: '&',
         cancel: '&',
