@@ -1,19 +1,19 @@
 <!--display mode-->
-<div class="panel" ng-click="output.edit()" ng-if="!output.isEditMode">
-  <strong ng-bind="output.model.name"></strong>
+<div class="panel" ng-click="editPanel.edit()" ng-if="!editPanel.isEditMode">
+  <ng-transclude></ng-transclude>
 </div>
 <!--edit mode-->
-<div class="panel" ng-if="output.isEditMode">
-  <form name="outputForm" ng-submit="output.onSubmit(output.form)" novalidate>
-    <formly-form model="output.model" fields="output.fields" form="output.form" options="output.options">
+<div class="panel" ng-if="editPanel.isEditMode">
+  <form name="outputForm" ng-submit="editPanel.onSubmit(editPanel.form)" novalidate>
+    <formly-form model="editPanel.model" fields="editPanel.fields" form="editPanel.form" options="editPanel.options">
       <div class="row">
         <div class="columns small-12">
           <ul class="button-group">
             <li>
-              <button type="button" ng-click="output.onDelete(output)">Delete</button>
+              <button type="button" ng-click="editPanel.onDelete(output)">Delete</button>
             </li>
             <li>
-              <button type="button" ng-click="output.onCancel()">Cancel</button>
+              <button type="button" ng-click="editPanel.onCancel()">Cancel</button>
             </li>
             <li>
               <button type="submit" ng-disabled="outputForm.$invalid">Save</button>

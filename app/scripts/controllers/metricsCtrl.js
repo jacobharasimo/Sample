@@ -9,6 +9,44 @@
  */
 
 function metricsCtrl($log) {
+
+  var Output = (function () {
+    function Output(output, metricForm) {
+      this.metricForm = angular.copy(metricForm);
+      this.name = output.name;
+      this.metrics = output.metrics;
+      if (!angular.isArray(this.metrics)) {
+        this.metrics = [];
+      }
+    }
+    Output.prototype.removeMetric = function (metric) {
+      _.remove(this.metrics,function(item){
+        return item.$id==metric.$id;
+      });
+      this.isInsertMode = false;
+      this.metricForm.options.resetModel();
+    };
+
+    Output.prototype.toggleInsertMode = function () {
+      this.metricForm = angular.copy(this.metricForm);
+      this.isInsertMode = true;
+    };
+
+    Output.prototype.addMetric = function (metric) {
+      var newMetric =angular.copy(metric);
+      newMetric.$id = Math.random().toString(36).substring(7);
+      newMetric.save = function saveMetric(metric){
+        $log.warn('save Metric ',metric)
+      };
+      this.metrics.push(newMetric);
+      this.isInsertMode = false;
+      this.metricForm.options.resetModel();
+    };
+
+    return Output;
+  })();
+
+
   var vm = {};
 
   var options = [
@@ -20,40 +58,46 @@ function metricsCtrl($log) {
     {name: 'Variance', value: 'variance'}
   ];
 
-  vm.metricModel = {
-    name: null,
-    type: null
+  vm.metricForm = {
+    model: {
+      name: null,
+      type: null
+    },
+    fields: [
+      {
+        key: 'type',
+        type: 'radio',
+        templateOptions: {
+          label: 'Select how your output will be measured',
+          options: options,
+          required: true,
+          valueProp: 'name',
+          labelProp: 'value',
+          requiredValidationMessage: 'Metric type Required'
+        }
+      },
+      {
+        key: 'name',
+        type: 'input',
+        templateOptions: {
+          type: 'text',
+          label: 'describe your metric',
+          placeholder: 'Enter the metric...',
+          required: true
+        },
+        modelOptions: {
+          debounce: 0
+        }
+      }
+    ]
   };
 
-  vm.metricFields = [
-    {
-      key: 'type',
-      type: 'radio',
-      templateOptions: {
-        label: 'Select how your output will be measured',
-        options: options,
-        required: true,
-        valueProp: 'name',
-        labelProp: 'value',
-        requiredValidationMessage: 'Metric type Required'
-      }
-    },
-    {
-      key: 'name',
-      type: 'input',
-      templateOptions: {
-        type: 'text',
-        label: 'describe your metric',
-        placeholder: 'Enter the metric...',
-        required: true
-      },
-      modelOptions: {
-        debounce: 0
-      }
-    }
-  ];
 
-  vm.outputs = angular.copy(vm.metricFields);
+  vm.outputList = [];
+
+  vm.outputList.push(new Output({name: 'test1'}, vm.metricForm));
+  vm.outputList.push(new Output({name: 'test2'}, vm.metricForm));
+
 
   vm.onSubmit = function (form) {
     form.$setSubmitted();

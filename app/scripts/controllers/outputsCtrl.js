@@ -48,6 +48,8 @@ function outputsCtrl($log){
 
   vm.addOutput = function addOutput(output){
     var newOutput={model:angular.copy(output),fields:angular.copy(vm.outputFields)};
+    /*need to seed the items with a unique id as names are unique thus how to delete the item?*/
+    newOutput.$id = Math.random().toString(36).substring(7);
     vm.list.push(newOutput);
     this.options.resetModel();
     $log.debug('add output ', newOutput);
@@ -57,6 +59,9 @@ function outputsCtrl($log){
   };
   vm.removeOutput = function removeOutput(output){
     $log.debug('remove output ', output);
+    _.remove(vm.list,function(item){
+      return item.$id==output.$id;
+    });
   };
   return vm;
 }

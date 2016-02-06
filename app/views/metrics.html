@@ -1,8 +1,8 @@
 <h1>Metrics</h1>
 <div class="panel">
   <form name="metricForm" ng-submit="metrics.onSubmit(metrics.form)" novalidate>
-    <formly-form model="metrics.metricModel" fields="metrics.metricFields" form="metrics.form"
-                 options="metrics.options">
+    <formly-form model="metrics.metricForm.model" fields="metrics.metricForm.fields" form="metrics.metricForm.form"
+                 options="metrics.metricForm.options">
       <div class="row">
         <div class="columns small-12">
           <ul class="button-group">
@@ -23,48 +23,47 @@
 </div>
 
 <ul class="small-block-grid-1">
-  <li ng-repeat="output in metrics.outputs track by $index">
-    <div style="display: block;">
-      <div class="panel" style="margin-bottom:0;">
-        OUTPUT NAME
-      </div>
+  <li ng-repeat="output in metrics.outputList track by $index">
+    <div class="block">
+      <!--output name -->
+      <div class="panel" style="margin-bottom:0;" ng-bind="::output.name"></div>
+      <!--Metric list-->
       <div class="row">
         <div class="columns small-12">
           <ul class="small-block-grid-1">
             <li ng-repeat="metric in output.metrics track by $index" style="padding-bottom: 0;">
-              <metric class="panel callout" style="display:block;margin-bottom: 0;">
-                {{metric.name}}
-              </metric>
+              <edit-panel class="row collapse"
+                          fields="output.metricForm.fields"
+                          model="metric"
+                          item-class="panel callout"
+                          remove="output.removeMetric(metric)"
+                          save="metric.save(metric)">
+                <strong>{{metric.type}} name:{{metric.name}}</strong>
+              </edit-panel>
             </li>
           </ul>
         </div>
       </div>
-
+      <!--insert new metric button-->
       <div class="row" ng-if="!output.isInsertMode">
         <div class="small-12 columns">
           <button type="button" class="button expand" ng-click="output.toggleInsertMode()">Add Metric</button>
         </div>
       </div>
-
-      <form ng-if="output.isInsertMode" ng-submit="output.addMetric(metrics.newMetric)">
-        <div class="row collapse">
-          <div class="columns small-12">
-            <label>Select How your Output will be measured</label>
-            <input type="radio" name="output" value="time" id="option1"><label for="option1">Time</label>
-            <input type="radio" name="output" value="cost" id="option2"><label for="option2">Cost</label>
-            <input type="radio" name="output" value="quality" id="option3"><label for="option3">Quality</label>
-            <input type="radio" name="output" value="feedback" id="option4"><label for="option4">Feedback</label>
-            <input type="radio" name="output" value="quantity" id="option5"><label for="option5">Quantity</label>
-            <input type="radio" name="output" value="variance" id="option6"><label for="option6">Variance</label>
+      <!--insert new metric form-->
+      <form name="newMetricForm" ng-if="output.isInsertMode" ng-submit="output.addMetric(output.metricForm.model)" novalidate>
+        <formly-form model="output.metricForm.model" fields="output.metricForm.fields" form="output.metricForm.form"
+                     options="output.metricForm.options">
+          <div class="row">
+            <div class="columns small-12">
+              <ul class="button-group">
+                <li>
+                  <button type="submit">Save</button>
+                </li>
+              </ul>
+            </div>
           </div>
-          <label>Describe your metric</label>
-          <div class="small-9 columns">
-            <input type="text" placeholder="Enter the metric.." ng-model="metrics.newMetric.name"/>
-          </div>
-          <div class="small-3 columns">
-            <button type="submit" class="button postfix">add</button>
-          </div>
-        </div>
+        </formly-form>
       </form>
     </div>
   </li>

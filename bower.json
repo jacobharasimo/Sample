@@ -15,7 +15,8 @@
     "angular-sanitize": "^1.4.0",
     "angular-touch": "^1.4.0",
     "angular-formly": "^7.3.9",
-    "api-check": "^7.5.5"
+    "api-check": "^7.5.5",
+    "lodash": "~4.2.1"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.0",

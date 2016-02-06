@@ -1,3 +1,4 @@
+
 'use strict';
 
 angular.module('sampleApp')
@@ -31,13 +32,15 @@ angular.module('sampleApp')
           this.isEditMode = false;
         };
 
-        this.onDelete = function onDelete(){
+        this.onDelete = function onDelete(output){
           $log.debug('call delete function');
           this.remove();
+          this.isEditMode = false;
         };
 
       },
-      controllerAs: 'output',
+      controllerAs: 'editPanel',
+      transclude:true,
       bindToController: {
         fields:'=',
         model:'=',
