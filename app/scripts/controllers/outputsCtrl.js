@@ -31,7 +31,7 @@ function outputsCtrl($log){
   vm.outputFields=[
     {
       key:'name',
-      type:'input',
+      type:'foundationInput',
       templateOptions:{
         type:'text',
         label:'output name',

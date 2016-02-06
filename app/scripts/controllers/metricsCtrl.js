@@ -66,7 +66,7 @@ function metricsCtrl($log) {
     fields: [
       {
         key: 'type',
-        type: 'radio',
+        type: 'foundationRadio',
         templateOptions: {
           label: 'Select how your output will be measured',
           options: options,
@@ -78,7 +78,7 @@ function metricsCtrl($log) {
       },
       {
         key: 'name',
-        type: 'input',
+        type: 'foundationInput',
         templateOptions: {
           type: 'text',
           label: 'describe your metric',

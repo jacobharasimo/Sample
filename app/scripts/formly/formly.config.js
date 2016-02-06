@@ -6,9 +6,9 @@ angular.module('sampleApp')
 
     /*error message wrapper*/
     formlyConfigProvider.setWrapper({
-      name: 'label',
+      name: 'foundationLabel',
       templateUrl: 'formly/label.html',
-      types: ['input', 'radio'],
+      types: ['foundationInput', 'foundationRadio'],
       apiCheck: function (check) {
         return ({
           templateOptions: {
@@ -22,14 +22,14 @@ angular.module('sampleApp')
     });
 
     formlyConfigProvider.setWrapper({
-      name: 'validation',
-      types: ['input', 'radio'],
+      name: 'foundationValidation',
+      types: ['foundationInput', 'foundationRadio'],
       templateUrl: 'formly/validation.html',
       overwriteOk: true
     });
 
     formlyConfigProvider.setType({
-      name: 'input',
+      name: 'foundationInput',
       templateUrl: 'formly/input.html',
       overwriteOk: true,
       defaultOptions: function (options) {
@@ -42,7 +42,7 @@ angular.module('sampleApp')
     });
 
     formlyConfigProvider.setType({
-      name: 'radio',
+      name: 'foundationRadio',
       overwriteOk: true,
       templateUrl: 'formly/radio.html',
       defaultOptions: {
