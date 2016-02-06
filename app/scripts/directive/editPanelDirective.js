@@ -5,7 +5,7 @@ angular.module('sampleApp')
   .directive('editPanel', function ($log) {
     return {
       template: null,
-      templateUrl: 'scripts/directive/editPanelDirective.html',
+      templateUrl: 'directive/editPanelDirective.html',
       restrict: 'E',
       replace: false,
       scope: true,

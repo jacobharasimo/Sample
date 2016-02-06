@@ -7,7 +7,7 @@ angular.module('sampleApp')
     /*error message wrapper*/
     formlyConfigProvider.setWrapper({
       name: 'label',
-      templateUrl: 'scripts/formly/label.html',
+      templateUrl: 'formly/label.html',
       types: ['input', 'radio'],
       apiCheck: function (check) {
         return ({
@@ -24,13 +24,13 @@ angular.module('sampleApp')
     formlyConfigProvider.setWrapper({
       name: 'validation',
       types: ['input', 'radio'],
-      templateUrl: 'scripts/formly/validation.html',
+      templateUrl: 'formly/validation.html',
       overwriteOk: true
     });
 
     formlyConfigProvider.setType({
       name: 'input',
-      templateUrl: 'scripts/formly/input.html',
+      templateUrl: 'formly/input.html',
       overwriteOk: true,
       defaultOptions: function (options) {
         if (!options.templateOptions.onChange || !angular.isFunction(options.templateOptions.onChange)) {
@@ -44,7 +44,7 @@ angular.module('sampleApp')
     formlyConfigProvider.setType({
       name: 'radio',
       overwriteOk: true,
-      templateUrl: 'scripts/formly/radio.html',
+      templateUrl: 'formly/radio.html',
       defaultOptions: {
         noFormControl: false
       },

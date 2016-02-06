@@ -85,9 +85,79 @@
 <!-- endbuild -->
 
 
-
 <!--angular templates-->
+<script type="text/ng-template" id="formly/label.html">
+  <label ng-attr-for="{{id}}" ng-class="{error:showError}">
+    {{::to.label}}
+    <formly-transclude></formly-transclude>
+  </label>
+</script>
 
+
+<script type="text/ng-template" id="formly/validation.html">
+  <formly-transclude></formly-transclude>
+  <div class="help-block"
+       ng-if="showError"
+       ng-messages="fc.$error"
+       aria-live="assertive">
+    <small ng-message="{{::name}}" class="error" ng-repeat="(name, message) in ::options.validation.messages"
+           role="alert"
+           id="{{options.key + '_error'}}">
+      {{message(fc.$viewValue, fc.$modelValue, this)}}
+    </small>
+  </div>
+</script>
+
+
+<script type="text/ng-template" id="formly/input.html">
+  <input class="form-control" ng-model="model[options.key]" aria-describedby="{{::options.key + '_error'}}"
+         placeholder="{{options.templateOptions.placeholder}}">
+</script>
+
+
+<script type="text/ng-template" id="formly/radio.html">
+  <div class="radio-group">
+    <div ng-repeat="(key, option) in to.options" class="radio-inline">
+      <label>
+        <input type="radio"
+               id="{{id + '_'+ $index}}"
+               tabindex="0"
+               ng-value="option[to.valueProp || 'value']"
+               ng-model="model[options.key]">
+        {{option[to.labelProp || 'name']}}
+      </label>
+    </div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="directive/editPanelDirective.html">
+  <!--display mode-->
+  <div class="panel" ng-click="editPanel.edit()" ng-if="!editPanel.isEditMode">
+    <ng-transclude></ng-transclude>
+  </div>
+  <!--edit mode-->
+  <div class="panel" ng-if="editPanel.isEditMode">
+    <form name="outputForm" ng-submit="editPanel.onSubmit(editPanel.form)" novalidate>
+      <formly-form model="editPanel.model" fields="editPanel.fields" form="editPanel.form" options="editPanel.options">
+        <div class="row">
+          <div class="columns small-12">
+            <ul class="button-group">
+              <li>
+                <button type="button" ng-click="editPanel.onDelete(output)">Delete</button>
+              </li>
+              <li>
+                <button type="button" ng-click="editPanel.onCancel()">Cancel</button>
+              </li>
+              <li>
+                <button type="submit" ng-disabled="outputForm.$invalid">Save</button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </formly-form>
+    </form>
+  </div>
+</script>
 
 
 </body>
