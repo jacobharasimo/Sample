@@ -19,10 +19,9 @@ function metricsCtrl($log) {
         this.metrics = [];
       }
     }
+
     Output.prototype.removeMetric = function (metric) {
-      _.remove(this.metrics,function(item){
-        return item.$id==metric.$id;
-      });
+      $log.warn('remove metric ', metric);
       this.isInsertMode = false;
       this.metricForm.options.resetModel();
     };
@@ -33,10 +32,10 @@ function metricsCtrl($log) {
     };
 
     Output.prototype.addMetric = function (metric) {
-      var newMetric =angular.copy(metric);
+      var newMetric = angular.copy(metric);
       newMetric.$id = Math.random().toString(36).substring(7);
-      newMetric.save = function saveMetric(metric){
-        $log.warn('save Metric ',metric)
+      newMetric.save = function saveMetric(metric) {
+        $log.warn('save Metric ', metric);
       };
       this.metrics.push(newMetric);
       this.isInsertMode = false;

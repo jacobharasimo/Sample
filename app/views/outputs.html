@@ -1,19 +1,19 @@
 <h1>Outputs</h1>
 
 <ul class="small-block-grid-1">
-  <li ng-repeat="output in outputs.list track by $index">
+  <li ng-repeat="output in outputController.list track by $index">
     <edit-panel class="row collapse"
-                fields="output.fields"
-                model="output.model"
-                remove="outputs.removeOutput(output)"
-                save="outputs.updateOutput(output)">
-      <strong ng-bind="output.model.name"></strong>
+                fields="outputController.outputEditFields"
+                model="output"
+                remove="outputController.removeOutput(output)"
+                save="outputController.updateOutput(output)">
+      <strong ng-bind="output.text"></strong>
     </edit-panel>
   </li>
 </ul>
 
-<form name="addMetric" ng-submit="outputs.addOutput(outputs.model)">
-  <formly-form model="outputs.model" fields="outputs.newOutputFields" form="outputs.form" options="outputs.options"
+<form name="addMetric" ng-submit="outputController.addOutput(outputController.model)" novalidate>
+  <formly-form model="outputController.model" fields="outputController.outputFields" form="outputController.form" options="outputController.options"
                class="row collapse">
     <div class="small-3 columns" style="padding:0;">
       <label>&nbsp;</label>

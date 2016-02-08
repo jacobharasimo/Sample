@@ -11,10 +11,10 @@
 function outputsCtrl($log){
   var vm={};
 
-  vm.newOutputFields=[
+  vm.outputFields=[
     {
-      key:'name',
-      type:'input',
+      key:'text',
+      type:'foundationInput',
       className:'columns small-9',
       templateOptions:{
         type:'text',
@@ -28,9 +28,9 @@ function outputsCtrl($log){
     }
   ];
 
-  vm.outputFields=[
+  vm.outputEditFields=[
     {
-      key:'name',
+      key:'text',
       type:'foundationInput',
       templateOptions:{
         type:'text',
@@ -47,9 +47,7 @@ function outputsCtrl($log){
   vm.list = [];
 
   vm.addOutput = function addOutput(output){
-    var newOutput={model:angular.copy(output),fields:angular.copy(vm.outputFields)};
-    /*need to seed the items with a unique id as names are unique thus how to delete the item?*/
-    newOutput.$id = Math.random().toString(36).substring(7);
+    var newOutput=angular.copy(output);
     vm.list.push(newOutput);
     this.options.resetModel();
     $log.debug('add output ', newOutput);
@@ -59,9 +57,6 @@ function outputsCtrl($log){
   };
   vm.removeOutput = function removeOutput(output){
     $log.debug('remove output ', output);
-    _.remove(vm.list,function(item){
-      return item.$id==output.$id;
-    });
   };
   return vm;
 }

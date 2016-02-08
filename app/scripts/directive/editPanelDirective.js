@@ -11,10 +11,12 @@ angular.module('sampleApp')
       scope: true,
       controller: function () {
         this.isEditMode = false;
-
+        this.itemFields = angular.copy(this.fields);
+        this.itemModel = angular.copy(this.model);
         this.onSubmit = function onSubmit(postForm) {
           $log.debug('submit form');
           if (postForm.$valid) {
+            this.model = angular.copy(this.itemModel);
             $log.debug('form valid');
             this.save();
             this.isEditMode = false;
@@ -34,7 +36,7 @@ angular.module('sampleApp')
 
         this.onDelete = function onDelete(output){
           $log.debug('call delete function');
-          this.remove();
+          this.remove(output);
           this.isEditMode = false;
         };
 

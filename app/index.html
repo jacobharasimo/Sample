@@ -132,13 +132,13 @@
 
 <script type="text/ng-template" id="directive/editPanelDirective.html">
   <!--display mode-->
-  <div class="panel" ng-click="editPanel.edit()" ng-if="!editPanel.isEditMode">
+  <div class="editee statement output" ng-click="editPanel.edit()" ng-if="!editPanel.isEditMode">
     <ng-transclude></ng-transclude>
   </div>
   <!--edit mode-->
   <div class="panel" ng-if="editPanel.isEditMode">
     <form name="outputForm" ng-submit="editPanel.onSubmit(editPanel.form)" novalidate>
-      <formly-form model="editPanel.model" fields="editPanel.fields" form="editPanel.form" options="editPanel.options">
+      <formly-form model="editPanel.itemModel" fields="editPanel.itemFields" form="editPanel.form" options="editPanel.options">
         <div class="row">
           <div class="columns small-12">
             <ul class="button-group">

@@ -25,7 +25,7 @@ angular
       .when('/outputs', {
         templateUrl: 'views/outputs.html',
         controller: 'outputsCtrl',
-        controllerAs:'outputs'
+        controllerAs:'outputController'
       })
       .when('/metrics', {
         templateUrl: 'views/metrics.html',
