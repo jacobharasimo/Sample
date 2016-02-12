@@ -1,4 +1,6 @@
 <h1>Metrics</h1>
+<!--
+
 <div class="panel">
   <form name="metricForm" ng-submit="metrics.onSubmit(metrics.form)" novalidate>
     <formly-form model="metrics.metricForm.model" fields="metrics.metricForm.fields" form="metrics.metricForm.form"
@@ -21,16 +23,19 @@
     </formly-form>
   </form>
 </div>
+-->
 
 <ul class="small-block-grid-1">
+  <!--list of outputs-->
   <li ng-repeat="output in metrics.outputList track by $index">
     <div class="block">
-      <!--output name -->
+      <!--display panel-->
       <div class="panel" style="margin-bottom:0;" ng-bind="::output.name"></div>
       <!--Metric list-->
       <div class="row">
         <div class="columns small-12">
           <ul class="small-block-grid-1">
+            <!--list of metrics in the output-->
             <li ng-repeat="metric in output.metrics track by $index" style="padding-bottom: 0;">
               <edit-panel class="row collapse"
                           fields="output.metricForm.fields"

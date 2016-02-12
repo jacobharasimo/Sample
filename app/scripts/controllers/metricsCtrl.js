@@ -13,7 +13,7 @@ function metricsCtrl($log) {
   var Output = (function () {
     function Output(output, metricForm) {
       this.metricForm = angular.copy(metricForm);
-      this.name = output.name;
+      this.text = output.text;
       this.metrics = output.metrics;
       if (!angular.isArray(this.metrics)) {
         this.metrics = [];
@@ -94,8 +94,8 @@ function metricsCtrl($log) {
 
   vm.outputList = [];
 
-  vm.outputList.push(new Output({name: 'test1'}, vm.metricForm));
-  vm.outputList.push(new Output({name: 'test2'}, vm.metricForm));
+  vm.outputList.push(new Output({text: 'test1'}, vm.metricForm));
+  vm.outputList.push(new Output({text: 'test2'}, vm.metricForm));
 
 
   vm.onSubmit = function (form) {
